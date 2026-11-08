@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories_movement', function (Blueprint $table) {
-            $table->id();
+            $table->smallinteger('id')->unsigned()->autoIncrement();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('name', 100);
             $table->boolean('is_active')->default(true);
