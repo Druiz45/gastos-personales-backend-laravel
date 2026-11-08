@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('categories_movement', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('name', 100);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete();
+            $table->unique(['user_id', 'name']);
         });
     }
 
