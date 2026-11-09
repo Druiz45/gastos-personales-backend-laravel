@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class DocumentType extends Model
 {
-    protected $table = 'types_movement';
+    protected $table = 'document_types';
 }
