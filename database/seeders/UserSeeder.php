@@ -25,8 +25,12 @@ class UserSeeder extends Seeder
             [
                 'document_type_id' => $documentType->id,
                 'document' => '1000000000',
-                'first_name' => 'Usuario',
-                'last_name' => 'Administrador',
+                'first_name' => 'Diego',
+                'middle_name' => null,
+                'first_surname' => 'Ruiz',
+                'second_surname' => null,
+                'email' => 'diego@gmail.com',
+                'phone' => '1000000000',
                 'password' => Hash::make('password'), # No olvide cambiar la contraseña en producción
             ]
         );
