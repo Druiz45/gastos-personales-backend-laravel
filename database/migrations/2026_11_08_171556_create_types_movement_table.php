@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('types_movement', function (Blueprint $table) {
-            $table->tinyInteger('id')->primary()->unsigned();
+            $table->tinyInteger('id')->primary()->unsigned()->autoIncrement();
             $table->string('name', 20)->unique();
             $table->timestamps();
         });
