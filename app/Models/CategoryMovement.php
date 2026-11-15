@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CategoryMovement extends Model
 {
@@ -12,4 +13,9 @@ class CategoryMovement extends Model
         'user_id',
         'name',
     ];
+
+    public function movements(): HasMany
+    {
+        return $this->hasMany(Movement::class, 'category_movement_id');
+    }
 }
