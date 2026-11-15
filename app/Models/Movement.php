@@ -22,8 +22,40 @@ class Movement extends Model
         'transaction_date',
     ];
 
+    /**
+     * Usuario propietario del movimiento.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Tipo de movimiento (entrada o salida).
+     */
     public function typeMovement(): BelongsTo
     {
         return $this->belongsTo(TypeMovement::class);
+    }
+
+    /**
+     * Categoría asociada al movimiento.
+     */
+    public function categoryMovement(): BelongsTo
+    {
+        return $this->belongsTo(CategoryMovement::class);
+    }
+
+    /**
+     * Conversiones de atributos.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'amount' => 'decimal:2',
+            'transaction_date' => 'date',
+        ];
     }
 }
