@@ -3,25 +3,22 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\V1\DocumentTypeResource;
 use App\Models\DocumentType;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class DocumentTypeController extends Controller
 {
     /**
      * Obtener todos los tipos de documento.
      */
-    public function index(): JsonResponse
+    public function index(): JsonResponse | AnonymousResourceCollection
     {
-        $documentTypes = DocumentType::query()
-            ->select(['id', 'name'])
-            ->orderBy('id')
-            ->get();
+        $documentTypes = DocumentType::orderBy('name', 'asc')->get();
 
-        return response()->json([
-            'data' => $documentTypes,
-        ]);
+        return DocumentTypeResource::collection($documentTypes);
     }
 
     /**
